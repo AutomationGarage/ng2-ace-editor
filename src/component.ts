@@ -127,6 +127,7 @@ export class AceEditorComponent {
             if (this._autoUpdateContent === true) {
                 this._text = text;
                 this._editor.setValue(text);
+                this._editor.clearSelection();
             }
         }
     }
