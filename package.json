@@ -1,6 +1,6 @@
 {
   "name": "ng2-ace-editor",
-  "version": "0.1.9",
+  "version": "0.2.3",
   "description": "Ace editor integration with typescript for angular 2.",
   "main": "ng2-ace-editor.js",
   "typings": "ng2-ace-editor.d.ts",
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
     "@types/hammerjs": "2.0.32",
     "@types/jasmine": "2.2.33",
     "@types/node": "6.0.38",

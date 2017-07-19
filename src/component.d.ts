@@ -1,8 +1,9 @@
 import { EventEmitter, ElementRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 import 'brace';
 import 'brace/theme/monokai';
 import 'brace/mode/html';
-export declare class AceEditorComponent {
+export declare class AceEditorComponent implements ControlValueAccessor {
     textChanged: EventEmitter<{}>;
     textChange: EventEmitter<{}>;
     style: any;
@@ -28,6 +29,12 @@ export declare class AceEditorComponent {
     setTheme(theme: any): void;
     mode: any;
     setMode(mode: any): void;
+    value: string;
+    writeValue(value: any): void;
+    private _onChange;
+    registerOnChange(fn: any): void;
+    private _onTouched;
+    registerOnTouched(fn: any): void;
     text: string;
     setText(text: any): void;
     autoUpdateContent: any;
