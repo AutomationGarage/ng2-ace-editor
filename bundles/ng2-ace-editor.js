@@ -35,9 +35,11 @@ System.registerDynamic("src/component", ["@angular/core", "@angular/forms", "bra
             this._onTouched = function () {};
             var el = elementRef.nativeElement;
             this._editor = ace["edit"](el);
+        }
+        AceEditorComponent.prototype.ngOnInit = function () {
             this.init();
             this.initEvents();
-        }
+        };
         AceEditorComponent.prototype.init = function () {
             this.setOptions(this._options || {});
             this.setTheme(this._theme);
@@ -251,9 +253,11 @@ System.registerDynamic("src/directive", ["@angular/core", "brace", "brace/theme/
             this._text = "";
             var el = elementRef.nativeElement;
             this.editor = ace["edit"](el);
+        }
+        AceEditorDirective.prototype.ngOnInit = function () {
             this.init();
             this.initEvents();
-        }
+        };
         AceEditorDirective.prototype.init = function () {
             this.editor.setOptions(this._options || {});
             this.editor.setTheme("ace/theme/" + this._theme);
