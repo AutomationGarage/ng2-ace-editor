@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Output, ElementRef, Input, forwardRef, OnInit} from '@angular/core';
-import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
-import 'brace';
-import 'brace/theme/monokai';
-import 'brace/mode/html';
+import {Component, EventEmitter, Output, ElementRef, Input, forwardRef, OnInit} from "@angular/core";
+import {NG_VALUE_ACCESSOR, ControlValueAccessor} from "@angular/forms";
+import "brace";
+import "brace/theme/monokai";
+import "brace/mode/html";
 
 declare var ace: any;
 
@@ -34,6 +34,7 @@ export class AceEditorComponent implements ControlValueAccessor, OnInit {
     constructor(elementRef: ElementRef) {
         let el = elementRef.nativeElement;
         this._editor = ace["edit"](el);
+        this._editor.$blockScrolling = Infinity;
     }
 
     ngOnInit() {
@@ -58,24 +59,22 @@ export class AceEditorComponent implements ControlValueAccessor, OnInit {
         if (newVal === this.oldText) {
             return;
         }
-        if (typeof this.oldText !== 'undefined') {
-            if (!this._durationBeforeCallback) {
-                this._text = newVal;
-                this.textChange.emit(newVal);
-                this.textChanged.emit(newVal);
-                this._onChange(newVal);
-            } else {
-                if (this.timeoutSaving) {
-                    clearTimeout(this.timeoutSaving);
-                }
-
-                this.timeoutSaving = setTimeout(function () {
-                    that._text = newVal;
-                    that.textChange.emit(newVal);
-                    that.textChanged.emit(newVal);
-                    that.timeoutSaving = null;
-                }, this._durationBeforeCallback);
+        if (!this._durationBeforeCallback) {
+            this._text = newVal;
+            this.textChange.emit(newVal);
+            this.textChanged.emit(newVal);
+            this._onChange(newVal);
+        } else {
+            if (this.timeoutSaving) {
+                clearTimeout(this.timeoutSaving);
             }
+
+            this.timeoutSaving = setTimeout(function () {
+                that._text = newVal;
+                that.textChange.emit(newVal);
+                that.textChanged.emit(newVal);
+                that.timeoutSaving = null;
+            }, this._durationBeforeCallback);
         }
         this.oldText = newVal;
     }

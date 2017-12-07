@@ -1,17 +1,32 @@
 # ng2-ace-editor
 
 [![npm version](https://badge.fury.io/js/ng2-ace-editor.svg)](https://www.npmjs.com/package/ng2-ace-editor) 
-Ace editor integration with typescript for angular 2.
+Ace editor integration with typescript for angular 5.  
+**To use Angular 4 install version 0.3.1 (npm i -S ng2-ace-editor@0.3.1).**
 
 # Install
 `npm i -S ng2-ace-editor`
+
+##### Load the module for your app:
+
+```javascript
+import { AceEditorModule } from 'ng2-ace-editor';
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    AceEditorModule
+  ]
+})
+```
 
 # Use directive
 
 > Minimal
 
 ```js
-//add "AceEditorDirective" to your modules list
+//import { AceEditorModule } from 'ng2-ace-editor';
 
 import { Component } from '@angular/core';
 
@@ -30,9 +45,6 @@ export class MyComponent {
 > Complete
 
 ```js
-//add "AceEditorDirective" to your modules list
-//import { AceEditorDirective } from 'ng2-ace-editor';
-
 import { Component } from '@angular/core';
 
 //to use theme "eclipse"
@@ -66,9 +78,6 @@ export class MyComponent {
 # Use Component
 
 ```js
-//add "AceEditorComponent" to your modules list
-//import { AceEditorComponent } from 'ng2-ace-editor';
-
 import {Component, ViewChild} from '@angular/core';
 
 //to use theme eclipse
@@ -104,22 +113,6 @@ export class AceCmp {
 }
 ```
 
-# Use AOT (thx Geschan)
-```js
-// other imports
-import { AceEditorModule } from 'ng2-ace-editor';
 
-@NgModule({
-  imports: [
-    // ...
-    AceEditorModule
-  ],
-  declarations: [  ],
-  providers: [  ]
-})
-export class AppModule {
-}
-```
-
-# Used by
-[caravel.design](https://www.caravel.design) - [example](https://app.caravel.design/p/58/sample-user-research/s/316/ab-testing/codeSample/184/button-a)
+# Power by
+[Use Code](http://www.use-code.com)
